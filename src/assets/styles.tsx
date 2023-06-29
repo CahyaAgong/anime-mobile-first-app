@@ -258,6 +258,7 @@ export const animeDetailContainer = css`
   display: flex;
   flex-direction: column;
   height: 100vh;
+  min-height: 100vh;
   font-family: Poppins;
 `;
 export const coverImage = (src: string) => css`
@@ -274,7 +275,7 @@ export const floatingContent = (floatingDivExpanded: boolean) => css`
   color: #fff;
   padding: 1rem 0.8rem;
   border-radius: 1.5rem 1.5rem 0 0;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;

@@ -5,7 +5,7 @@ import { AnimeList, AnimeDetail, Collection, CollectionDetail } from './pages';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='https://cahyaagong.github.io/anime-mobile-first-app'>
       <Routes>
         <Route path='/' element={<AnimeList />} />
         <Route path='/anime/:id' element={<AnimeDetail />} />

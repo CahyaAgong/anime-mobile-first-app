@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/anime-mobile-first-app/static/css/main.96c1a752.css",
-    "main.js": "/anime-mobile-first-app/static/js/main.2347588c.js",
+    "main.js": "/anime-mobile-first-app/static/js/main.90694479.js",
     "static/js/787.df800af6.chunk.js": "/anime-mobile-first-app/static/js/787.df800af6.chunk.js",
     "index.html": "/anime-mobile-first-app/index.html",
     "main.96c1a752.css.map": "/anime-mobile-first-app/static/css/main.96c1a752.css.map",
-    "main.2347588c.js.map": "/anime-mobile-first-app/static/js/main.2347588c.js.map",
+    "main.90694479.js.map": "/anime-mobile-first-app/static/js/main.90694479.js.map",
     "787.df800af6.chunk.js.map": "/anime-mobile-first-app/static/js/787.df800af6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.96c1a752.css",
-    "static/js/main.2347588c.js"
+    "static/js/main.90694479.js"
   ]
 }

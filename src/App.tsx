@@ -1,18 +1,18 @@
 import './assets/font.css';
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import { AnimeList, AnimeDetail, Collection, CollectionDetail } from './pages';
 
 function App() {
   return (
-    <BrowserRouter basename='https://cahyaagong.github.io/anime-mobile-first-app'>
+    <HashRouter>
       <Routes>
         <Route path='/' element={<AnimeList />} />
         <Route path='/anime/:id' element={<AnimeDetail />} />
         <Route path='/collections' element={<Collection />} />
         <Route path='/collections/:name' element={<CollectionDetail />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

@@ -2,7 +2,7 @@
   "name": "anilist-mobile-first",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://https://cahyaagong.github.io/anime-mobile-first-app",
+  "homepage": "https://cahyaagong.github.io/anime-mobile-first-app",
   "dependencies": {
     "@apollo/client": "^3.7.16",
     "@emotion/react": "^11.11.1",

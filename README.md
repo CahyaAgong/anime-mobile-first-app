@@ -1,5 +1,5 @@
 # Important
- - this project is mobile UI/UX
+This project is <b>mobile UI/UX</b>
 
 # Getting Started with Create React App
 

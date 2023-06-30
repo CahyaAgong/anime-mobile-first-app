@@ -139,6 +139,27 @@ export const searchBar = css`
 export const animeCardContainer = css`
   margin-top: 1rem;
   padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: start;
+
+  ${mq[1]} {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  ${mq[2]} {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  ${mq[3]} {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  // & > div {
+  //   width: 50px;
+  //   height: 50px;
+  // }
 `;
 
 export const animeCard = css`
@@ -146,12 +167,11 @@ export const animeCard = css`
   position: relative;
   overflow: hidden;
   border-radius: 1rem;
-  margin-bottom: 1.5rem;
+  // margin-bottom: 1.5rem;
 
   & > img {
-    // width: 100%;
-    // height: 100%;
-    object-fit: cover;
+    width: 100%;
+    height: 100%;
   }
 
   & > div {
@@ -159,13 +179,12 @@ export const animeCard = css`
     bottom: 5px;
     left: 5px;
     right: 5px;
-    padding: 0 0.3rem;
     display: flex;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(8px);
     border-radius: 1.2rem;
-    font-size: 12px;
+    font-size: 0.5rem;
     color: white;
     text-align: center;
   }

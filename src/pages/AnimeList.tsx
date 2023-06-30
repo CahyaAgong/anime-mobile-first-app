@@ -40,9 +40,7 @@ const AnimeList = () => {
               <Link to={`/anime/${anime.id}`}>
                 <div css={animeCard}>
                   <img
-                    src={anime.coverImage?.extraLarge}
-                    width={50}
-                    height={50}
+                    src={anime.coverImage?.large}
                     alt={`${anime.title?.romaji} covers`}
                   />
                   <div>

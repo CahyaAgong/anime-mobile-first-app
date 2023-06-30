@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/anime-mobile-first-app/static/css/main.96c1a752.css",
-    "main.js": "/anime-mobile-first-app/static/js/main.b6f952b0.js",
+    "main.css": "/anime-mobile-first-app/static/css/main.e328e93d.css",
+    "main.js": "/anime-mobile-first-app/static/js/main.bbce07ea.js",
     "static/js/787.df800af6.chunk.js": "/anime-mobile-first-app/static/js/787.df800af6.chunk.js",
     "index.html": "/anime-mobile-first-app/index.html",
-    "main.96c1a752.css.map": "/anime-mobile-first-app/static/css/main.96c1a752.css.map",
-    "main.b6f952b0.js.map": "/anime-mobile-first-app/static/js/main.b6f952b0.js.map",
+    "main.e328e93d.css.map": "/anime-mobile-first-app/static/css/main.e328e93d.css.map",
+    "main.bbce07ea.js.map": "/anime-mobile-first-app/static/js/main.bbce07ea.js.map",
     "787.df800af6.chunk.js.map": "/anime-mobile-first-app/static/js/787.df800af6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.96c1a752.css",
-    "static/js/main.b6f952b0.js"
+    "static/css/main.e328e93d.css",
+    "static/js/main.bbce07ea.js"
   ]
 }

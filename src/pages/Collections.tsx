@@ -11,6 +11,8 @@ import { Modal, Navbar, Footer, Button } from '../components';
 import { Link } from 'react-router-dom';
 
 /** @jsxImportSource @emotion/react */
+import { mq } from '../utils/mediaQuery';
+
 import {
   container,
   collectionListContainer,
@@ -92,11 +94,23 @@ const Collections = () => {
 
   if (isLoading) return <Loading />;
 
+  const actionButton = `padding:0.1rem; margin:5px 5px 0 0; font-size:10px; ${mq[1]} {
+    font-size:12px;
+    padding:0.2rem 0.5rem; 
+    margin:0;
+  }`;
+
+  const actionButtonDelete = `background-color: rgba(216,45,102, 0.7); border:1px solid #D82D66; :hover{ background-color: rgba(216,45,102, 1)}`;
+
   return (
     <div css={container}>
       <Navbar />
 
-      <Button title={`Add Collection`} handleClick={handleModalOpen} />
+      <Button
+        title={`Add Collection`}
+        handleClick={handleModalOpen}
+        styling='margin: 1rem;'
+      />
       <div css={collectionListContainer}>
         {collectionList.length > 0 ? (
           collectionList.map(item => (
@@ -111,39 +125,26 @@ const Collections = () => {
                 />
               </div>
               <div>
-                <h1>{item?.collectionName ?? ''}</h1>
+                <Link to={`${item.collectionName}`}>
+                  <>
+                    <h1>{item?.collectionName ?? ''}</h1>
+                    <span>Cover: {item?.firstAnime?.Media?.title?.romaji}</span>
+                  </>
+                </Link>
                 <div>
                   <Button
                     title={`Update`}
-                    styling={`margin:0 0.2rem 0 0; padding: 0.5rem;font-size:10px; `}
+                    styling={`${actionButton}`}
                     handleClick={() =>
                       handleEditCollection(item?.collectionName ?? '')
                     }
                   />
                   <Button
                     title={`Delete`}
-                    styling={`margin:0 0.2rem 0 0; padding: 0.5rem;font-size:10px; background-color: rgba(216,45,102, 0.7); border:1px solid #D82D66; :hover{ background-color: rgba(216,45,102, 1)}`}
+                    styling={`${actionButton} ${actionButtonDelete}`}
                     handleClick={() => handleModalDelete(item?.collectionName)}
                   />
                 </div>
-
-                <Link to={`${item.collectionName}`}>
-                  <span>
-                    <svg
-                      xmlns='http://www.w3.org/2000/svg'
-                      fill='none'
-                      viewBox='0 0 24 24'
-                      strokeWidth='1.5'
-                      stroke='currentColor'
-                    >
-                      <path
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        d='M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25'
-                      />
-                    </svg>
-                  </span>
-                </Link>
               </div>
             </div>
           ))
@@ -157,15 +158,21 @@ const Collections = () => {
         <div css={popupCollection}>
           {isDelete ? (
             <>
-              <p>Remove {newCollection} collections ? </p>
+              <p>
+                Remove <b>{newCollection}</b> collections ?{' '}
+              </p>
               <Button
                 title={'Yes'}
-                styling={`margin:0; background-color: rgba(216,45,102, 0.7); border:1px solid #D82D66; :hover{ background-color: rgba(216,45,102, 1)}`}
+                styling={`margin:0.2rem;  background-color: rgba(216,45,102, 0.7); border:1px solid #D82D66; :hover{ background-color: rgba(216,45,102, 1)} ${mq[1]} {
+                  margin:0.5rem;
+                }`}
                 handleClick={() => handleDeleteCollection(newCollection)}
               />
               <Button
                 title={'No'}
-                styling={`margin:0.5rem 0 0;`}
+                styling={`margin:0.2rem; ${mq[1]} {
+                  margin:0.5rem;
+                }`}
                 handleClick={handleModalClose}
               />
             </>

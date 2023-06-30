@@ -35,6 +35,10 @@ export const useFetchAnimeList = () => {
             large
             extraLarge
           }
+          episodes
+          tags {
+            name
+          }
         }
       }
     }
@@ -116,50 +120,11 @@ export const useFetchAnimeDetail = (id: string) => {
         }
         seasonYear
         bannerImage
-        status
-        format
-        episodes
-        genres
-        averageScore
         meanScore
-        popularity
         favourites
+        popularity
         trending
-        relations {
-          edges {
-            characters {
-              name {
-                full
-                native
-              }
-              image {
-                medium
-              }
-              gender
-            }
-            characterRole
-          }
-          nodes {
-            title {
-              romaji
-              english
-              native
-            }
-            description
-            status
-          }
-        }
-        characters {
-          edges {
-            name
-          }
-        }
-        rankings {
-          rank
-          type
-        }
-        siteUrl
-        modNotes
+        genres
       }
     }
   `;

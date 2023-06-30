@@ -18,10 +18,6 @@ export const navbarStyles = css`
   padding: 1rem;
   height: 60px;
   position: relative;
-
-  ${mq[1]} {
-    // color: green;
-  }
 `;
 
 export const titleApp = css`
@@ -139,27 +135,14 @@ export const searchBar = css`
 export const animeCardContainer = css`
   margin-top: 1rem;
   padding: 1rem;
-  display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 1rem;
-  align-items: start;
 
-  ${mq[1]} {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: flex;
+  flex-direction: column;
+
+  & > div > a {
+    text-decoration: none;
+    color: black;
   }
-
-  ${mq[2]} {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  ${mq[3]} {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-  }
-
-  // & > div {
-  //   width: 50px;
-  //   height: 50px;
-  // }
 `;
 
 export const animeCard = css`
@@ -167,26 +150,80 @@ export const animeCard = css`
   position: relative;
   overflow: hidden;
   border-radius: 1rem;
-  // margin-bottom: 1.5rem;
-
-  & > img {
-    width: 100%;
-    height: 100%;
-  }
+  background-color: #2d3240;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 1rem;
+  padding: 1rem;
+  color: white;
 
   & > div {
-    position: absolute;
-    bottom: 5px;
-    left: 5px;
-    right: 5px;
+    width: 60px;
+    height: 80px;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    margin-right: 1rem;
+
+    & > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  & > div:last-child {
     display: flex;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(8px);
-    border-radius: 1.2rem;
-    font-size: 0.5rem;
-    color: white;
-    text-align: center;
+    flex-direction: column;
+    flex: 1;
+
+    & > h2 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 400;
+      width: 90%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    & > span {
+      margin-top: 0.3rem;
+      font-size: 12px;
+      font-weight: 300;
+    }
+
+    & > div {
+      display: flex;
+      align-items: center;
+      margin-top: 0.2rem;
+
+      & > h3 {
+        margin: 0;
+        font-size: 12px;
+        font-weight: 600;
+        margin-right: 0.3rem;
+        display: none;
+
+        ${mq[1]} {
+          display: block;
+        }
+      }
+      & > span {
+        font-size: 10px;
+        background-color: rgb(88, 186, 199, 0.5);
+        padding: 0.2rem;
+        border-radius: 0.2rem;
+        margin-right: 0.5rem;
+        text-align: center;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
   }
 `;
 
@@ -195,12 +232,15 @@ export const button = css`
   border: 1px solid #5ab9c7;
   color: white;
   padding: 0.5rem 1rem;
-  margin: 0 1rem 1rem;
+  margin: 1rem 0;
   border-radius: 0.5rem;
   font-weight: 500;
   font-size: 14px;
-  margin-top: 1rem;
   font-family: Poppins;
+
+  ${mq[1]} {
+    margin: 1rem 1rem;
+  }
 
   &: hover {
     background-color: rgb(88, 186, 199, 1);
@@ -288,6 +328,18 @@ export const coverImage = (src: string) => css`
   background-repeat: no-repeat;
 `;
 
+const highlightAnimation = keyframes`
+  0% {
+    fill: transparent;
+  }
+  50% {
+    fill: white;
+  }
+  100% {
+    fill: transparent;
+  }
+`;
+
 export const floatingContent = (floatingDivExpanded: boolean) => css`
   background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(6px);
@@ -306,6 +358,22 @@ export const floatingContent = (floatingDivExpanded: boolean) => css`
   align-items: center;
   overflow: hidden;
   ${floatingDivExpanded ? 'overflow-y: scroll;' : ''}
+
+  & > span {
+    display: inline-block;
+    width: 20px;
+    height: 15px;
+    margin-bottom: 0.5rem;
+
+    ${mq[1]} {
+      width: 25px;
+      height: 20px;
+    }
+
+    & > svg {
+      animation: ${highlightAnimation} 2s infinite;
+    }
+  }
 
   & > h1 {
     font-size: 1.5rem;
@@ -329,6 +397,10 @@ export const floatingContent = (floatingDivExpanded: boolean) => css`
     width: 100%;
     border-radius: 1rem;
     padding: 0.5rem 0;
+
+    ${mq[1]} {
+      width: 75%;
+    }
 
     & > div {
       display: flex;
@@ -360,6 +432,10 @@ export const floatingContent = (floatingDivExpanded: boolean) => css`
     font-size: 12px;
     font-weight: 300;
     text-align: justify;
+
+    ${mq[1]} {
+      margin-top: 2rem;
+    }
   }
 `;
 
@@ -401,7 +477,9 @@ export const inCollection = css`
   & > div {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
+    gap: 0.5rem;
   }
 
   & > div > div > a {
@@ -412,6 +490,8 @@ export const inCollection = css`
     padding: 0.4rem;
     background-color: rgb(88, 186, 199, 0.5);
     border-radius: 0.3rem;
+    display: flex;
+    flex-shrink: 0;
   }
 
   & > div > p {
@@ -443,13 +523,14 @@ export const collectionListContainer = css`
   & > div {
     background-color: white;
     margin: 0.5rem;
-    border-radius: 0.3rem;
+    border-radius: 0.5rem;
     display: flex;
     flex-direction: row;
     padding: 0.5rem;
 
     & > div {
-      width: 30%;
+      width: 80px;
+      height: 80px;
       overflow: hidden;
       border-radius: 0.2rem;
 
@@ -462,39 +543,42 @@ export const collectionListContainer = css`
 
     & > div:last-child {
       width: 100%;
+      height: 100%;
       display: flex;
       flex-direction: column;
-      position: relative;
-      margin-left: 1rem;
-
-      & > h1 {
-        font-size: 1.2rem;
-        font-weight: 400;
-        color: black;
-        text-decoration: none;
-        margin: 0;
-        width: 90%;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-      & > div {
-        display: flex;
-        height: 50%;
-        align-items: end;
-      }
+      margin-left: 0.5rem;
 
       & > a {
-        display: block;
-        width: 20px;
-        height: 20px;
-        position: absolute;
-        top: 0;
-        right: 0;
+        text-decoration: none;
+        padding: 0;
+        margin: 0;
 
-        & > span > svg {
-          stroke: black;
+        & > h1 {
+          font-size: 1rem;
+          font-weight: 400;
+          color: black;
+          text-decoration: none;
+          margin: 0;
+          width: 90%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        & > span {
+          margin: 0;
+          padding: 0;
+          color: black;
+          font-size: 10px;
+        }
+      }
+      & > div {
+        display: flex;
+        height: fit-content;
+        gap: 0.1rem;
+
+        ${mq[1]} {
+          gap: 0.5rem;
         }
       }
     }
@@ -510,37 +594,65 @@ export const collectionDetail = css`
   padding: 1rem;
   display: flex;
   flex-direction: column;
+  min-height: 50vh;
+
+  & > h1 {
+    margin: 0.5rem 0;
+    font-size: 2.5rem;
+  }
 
   & > div {
     display: grid;
+    gap: 0.5rem;
     grid-template-columns: repeat(1, minmax(0, 1fr));
+
+    ${mq[1]} {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 
   & > div > div {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 0.4rem;
+    padding: 0.5rem;
+    border-radius: 0.6rem;
     color: black;
     position: relative;
     margin-bottom: 1rem;
 
-    & > h2 {
-      margin: 0.5rem 0;
-      padding: 0;
-    }
-
     & > a {
-      display: block;
-      width: 30px;
-      height: 30px;
-      position: absolute;
-      top: 5px;
-      right: 5px;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      color: black;
+      padding: 0;
+      margin: 0;
 
-      & > span > svg {
-        stroke: black;
+      & > h2 {
+        margin: 1rem 0;
+        padding: 0;
+        font-size: 12px;
+        font-weight: 500;
+        text-align: center;
+
+        ${mq[1]} {
+          font-size: 14px;
+          text-align: left;
+        }
+      }
+
+      & > div {
+        width: 150px;
+        height: 150px;
+
+        & > img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
       }
     }
   }
@@ -582,11 +694,16 @@ export const popupCollection = css`
       padding: 0.2rem;
       border-radius: 0.2rem;
       color: white;
-      font-weight: 500;
-
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+
+      font-weight: 500;
+      font-size: 12px;
+
+      ${mq[1]} {
+        font-size: 14px;
+      }
     }
   }
 `;

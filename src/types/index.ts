@@ -12,6 +12,13 @@ export interface Anime {
     large: string;
     extraLarge: string;
   };
+  episodes: number;
+  tags: animeTags[];
+}
+
+export interface animeTags {
+  name: string;
+  rank: number;
 }
 
 export interface AnimeListData {

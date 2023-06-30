@@ -9,12 +9,14 @@ import {
 import { AnimeInCollection } from '../types';
 
 /** @jsxImportSource @emotion/react */
+import { mq } from '../utils/mediaQuery';
+
 import {
   container,
   collectionDetail as collectionDetailContainer,
   popupCollection,
 } from '../assets/styles';
-import { Button, Modal, Navbar } from '../components';
+import { Button, Footer, Modal, Navbar } from '../components';
 
 const CollectionDetail = () => {
   const { name } = useParams<{ name: string }>();
@@ -41,7 +43,6 @@ const CollectionDetail = () => {
       handleModalClose();
       return;
     }
-
     console.error('error ocurred!');
   };
 
@@ -70,25 +71,33 @@ const CollectionDetail = () => {
     <div css={container}>
       <Navbar />
       <div css={collectionDetailContainer}>
-        <h1>{name}</h1>
+        <h1>
+          <u>{name}</u>
+        </h1>
         <div>
           {collectionDetail.length > 0 ? (
             collectionDetail.map((item: AnimeInCollection) => (
               <div key={item?.Media?.id}>
-                <h2>{item?.Media?.title?.native}</h2>
-                <img
-                  src={item?.Media?.coverImage?.extraLarge}
-                  alt={item?.Media?.title?.native + ' covers'}
-                />
-                {/* <p
+                <Link to={`/anime/${item?.Media?.id}`}>
+                  <>
+                    <h2>{item?.Media?.title?.romaji}</h2>
+                    <div>
+                      <img
+                        src={item?.Media?.coverImage?.medium}
+                        alt={item?.Media?.title?.romaji + ' covers'}
+                      />
+                    </div>
+                    {/* <p
                   dangerouslySetInnerHTML={{
                     __html: item?.Media?.description ?? '',
                   }}
                 ></p> */}
+                  </>
+                </Link>
 
                 <Button
                   title={`Delete from collection`}
-                  styling={`margin:0.5rem 0; padding: 0.5rem;font-size:12px; background-color: rgba(216,45,102, 0.7); border:1px solid #D82D66; :hover{ background-color: rgba(216,45,102, 1)}`}
+                  styling={`width: 100%; margin:0.5rem 0; padding: 0.5rem;font-size:12px; background-color: rgba(216,45,102, 0.7); border:1px solid #D82D66; :hover{ background-color: rgba(216,45,102, 1)}`}
                   handleClick={() =>
                     handleModalDelete(
                       item?.Media?.id,
@@ -97,7 +106,7 @@ const CollectionDetail = () => {
                   }
                 />
 
-                <Link to={`/anime/${item?.Media?.id}`}>
+                {/* <Link to={`/anime/${item?.Media?.id}`}>
                   <span>
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
@@ -113,7 +122,7 @@ const CollectionDetail = () => {
                       />
                     </svg>
                   </span>
-                </Link>
+                </Link> */}
               </div>
             ))
           ) : (
@@ -121,17 +130,20 @@ const CollectionDetail = () => {
           )}
         </div>
       </div>
+      <Footer />
       <Modal isOpen={isModalOpen} onClose={handleModalClose}>
         <div css={popupCollection}>
-          <p>Remove {selectedAnimeName} from this collections ? </p>
+          <p>
+            Remove <b>{selectedAnimeName}</b> from this collections?
+          </p>
           <Button
             title={'Yes'}
-            styling={`margin:0; background-color: rgba(216,45,102, 0.7); border:1px solid #D82D66; :hover{ background-color: rgba(216,45,102, 1)}`}
+            styling={`margin:0; background-color: rgba(216,45,102, 0.7); border:1px solid #D82D66; :hover{ background-color: rgba(216,45,102, 1)} ${mq[1]}{ margin:0.5rem; }`}
             handleClick={() => handleDeleteAnime(selectedAnimeId || 0)}
           />
           <Button
             title={'No'}
-            styling={`margin:0.5rem 0 0;`}
+            styling={` ${mq[1]}{ margin:0.5rem; }`}
             handleClick={handleModalClose}
           />
         </div>

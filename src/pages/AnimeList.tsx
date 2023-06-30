@@ -15,8 +15,6 @@ const AnimeList = () => {
 
   if (loading) return <Loading />;
 
-  if (animeList.length < 1) return <div>No anime found.</div>;
-
   return (
     <HelmetProvider>
       <Helmet>
@@ -35,30 +33,47 @@ const AnimeList = () => {
         <SearchBar />
 
         <div css={animeCardContainer}>
-          {animeList.map(anime => (
-            <div key={anime.id}>
-              <Link to={`/anime/${anime.id}`}>
-                <div css={animeCard}>
-                  <img
-                    src={anime.coverImage?.large}
-                    alt={`${anime.title?.romaji} covers`}
-                  />
-                  <div>
-                    <h2>{anime.title?.romaji}</h2>
-                    {/* <p>{anime.description}</p> */}
+          {animeList.length > 0 ? (
+            animeList.map(anime => (
+              <div key={anime.id}>
+                <Link to={`/anime/${anime.id}`}>
+                  <div css={animeCard}>
+                    <div>
+                      <img
+                        src={anime.coverImage?.medium}
+                        alt={`${anime.title?.romaji ?? ''} covers`}
+                      />
+                    </div>
+                    <div>
+                      <h2>{anime.title?.romaji ?? ''}</h2>
+                      <span>Episodes : {anime.episodes ?? 0}</span>
+                      <div>
+                        <h3>Tags:</h3>
+                        {anime.tags.length > 0
+                          ? anime.tags
+                              .slice(0, 2)
+                              .map(item => (
+                                <span key={item.name}>{item.name}</span>
+                              ))
+                          : ''}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </div>
-          ))}
+                </Link>
+              </div>
+            ))
+          ) : (
+            <div>No Anime / Manga Available...</div>
+          )}
         </div>
 
-        <Button
-          isDisabled={isFetching}
-          title={isFetching ? 'Loading...' : 'Load More'}
-          handleClick={handleMoreData}
-        />
-
+        {animeList.length > 0 && (
+          <Button
+            isDisabled={isFetching}
+            title={isFetching ? 'Loading...' : 'Load More'}
+            handleClick={handleMoreData}
+          />
+        )}
         <Footer />
       </div>
     </HelmetProvider>

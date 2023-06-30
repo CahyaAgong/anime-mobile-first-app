@@ -9,10 +9,12 @@ import client from './config/apollo';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+const basename = 'https://cahyaagong.github.io/anime-mobile-first-app';
+
 root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <App />
+      <App basename={basename} />
     </ApolloProvider>
   </React.StrictMode>
 );

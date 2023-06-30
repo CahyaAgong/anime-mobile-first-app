@@ -41,6 +41,8 @@ const AnimeList = () => {
                 <div css={animeCard}>
                   <img
                     src={anime.coverImage?.extraLarge}
+                    width={50}
+                    height={50}
                     alt={`${anime.title?.romaji} covers`}
                   />
                   <div>

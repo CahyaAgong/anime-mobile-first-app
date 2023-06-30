@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 
 import {
@@ -9,14 +9,12 @@ import {
   getAllCollections,
   getCollectionByAnime,
   isCollectionCreated,
-  purgeAllCollections,
 } from '../actions/collection';
 import { useFetchAnimeDetail } from '../actions/dataProvider';
 
 import { Button, Modal, Navbar } from '../components';
 
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
 
 import { AnimeInCollection } from '../types';
 import {

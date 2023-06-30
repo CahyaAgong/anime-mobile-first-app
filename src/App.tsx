@@ -1,4 +1,4 @@
-import './assets/font.css';
+// import './assets/font.css';
 
 import { BrowserRouter, Route, Routes, HashRouter } from 'react-router-dom';
 import { AnimeList, AnimeDetail, Collection, CollectionDetail } from './pages';
